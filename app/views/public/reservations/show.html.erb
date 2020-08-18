@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>時間</strong>
+  <%= @reservation.start_time.strftime("%Y-%m-%d %H:%M") %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_reservation_path(@reservation) %> |
+<%= link_to 'Back', reservations_path %>

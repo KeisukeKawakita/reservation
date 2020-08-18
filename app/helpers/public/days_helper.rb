@@ -1,0 +1,2 @@
+module Public::DaysHelper
+end

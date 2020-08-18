@@ -1,0 +1,59 @@
+<div class="row">
+  <h2>
+    <%= @time %>
+  </h2>
+  <h3>
+    残り<%= 10 - @reservations.count.to_i %>
+  </h3>
+
+  <div class="col-xs-6">
+    <table class="table table-striped", border="2">
+      <thead>
+        <tr>
+          <th>名前</th>
+          <th>時間</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @reservations.each do |reservation| %>
+          <tr>
+            <td><%= reservation.end_user.name %></td>
+            <td><%= reservation.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-xs-6">
+    <h3>研究室の予定</h3>
+    <%= form_for(@schedule, url: schedules_path) do |f| %>
+
+     <h4>予定名</h4>
+     <%= f.text_field :name %>
+
+     <h4>内容</h4>
+     <%= f.text_area :introduction %>
+
+     <%= f.hidden_field :schedule_day, value: @time %>
+
+     <div class="action">
+      <%= f.submit '予定', class: "btn btn-info" %>
+     </div>
+    <% end %>
+
+
+    <h3>研究室予約</h3>
+    <%= form_for(@reservation, url: reservations_path) do |f| %>
+     <% if 1==0 %>
+      <%= f.select :time, {'10時~17時': 0, '17時~22時': 1}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+     <% end %>
+      <div class="time">
+        <%= f.label :start_time %>
+        <%= f.datetime_select :start_time %>
+      </div>
+      <%= f.submit '予約', class: "btn btn-info" %>
+    <% end %>
+  </div>
+</div>

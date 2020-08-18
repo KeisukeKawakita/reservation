@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <h1>予約一覧</h1>
+  <div class="col-xs-3">
+    <table class="table">
+        自分の予約日
+        <% @my_reservations.each do |reservation| %>
+          <tr>
+            <td><%= reservation.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+          </tr>
+        <% end %>
+    </table>
+  </div>
+
+  <div class="col-xs-9">
+    <%= month_calendar events: @reservations do |date, reservations| %>
+      <%= link_to day_path(date) do %>
+        <div class="date-day">
+          <%= date.day %>
+        </div class="seet-count">
+        <div>
+          <% if reservations.count != 0 %>
+            残り<%= 10 - reservations.count.to_i %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to "新規予約", new_reservation_path %>

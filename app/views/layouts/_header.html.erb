@@ -2,31 +2,55 @@
   <div class="container">
     <nav class="nav navbar-nav navbar-left">
       <h2>
-        <font color="#ffffff">
-          研究室予約
+        <font color="#fff">
+          <%= link_to "研究室予約", root_path %>
         </font>
       </h2>
     </nav>
     <nav>
       <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
-        <li class="icon">
-          <%= link_to root_path do %>
-          <i class="fas fa-link"></i>
-          予約一覧
-          <% end %>
-        </li>
-        <li class="icon">
-          <%= link_to root_path do %>
-          <i class="fas fa-edit"></i>
-          新規登録
-          <% end %>
-        </li>
-        <li class="icon">
-          <%= link_to root_path do %>
-          <i class="fas fa-sign-in-alt"></i>
-          ログイン
-          <% end %>
-        </li>
+        <% if end_user_signed_in? %>
+          <li size="50" color="ff0000">
+            <%= current_end_user.name %>
+          </li>
+          <li class="icon">
+            <%= link_to end_users_path do %>
+            <i class="fas fa-home"></i>
+            マイページ
+            <% end %>
+          </li>
+          <li class="icon">
+            <%= link_to reservations_path do %>
+            <i class="fas fa-link"></i>
+            予約一覧
+            <% end %>
+          </li>
+          <li class="icon">
+            <%= link_to destroy_end_user_session_path, method: :delete do %>
+            <i class="fas fa-sign-out-alt"></i>
+            ログアウト
+            <% end %>
+          </li>
+        <% else %>
+          <li class="icon">
+            <%= link_to root_path do %>
+            <i class="fas fa-home"></i>
+            Home
+            <% end %>
+          </li>
+          <li class="icon">
+            <%= link_to new_end_user_registration_path do %>
+            <i class="fas fa-edit"></i>
+            新規登録
+            <% end %>
+          </li>
+          <li class="icon">
+            <%= link_to new_end_user_session_path do %>
+            <i class="fas fa-sign-in-alt"></i>
+            ログイン
+            <% end %>
+          </li>
+        <% end %>
       </ul>
     </nav>
   </div>
