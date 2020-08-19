@@ -3,4 +3,12 @@ class Public::HomesController < ApplicationController
 		@reservations = Reservation.all
 		@schedules = Schedule.all
 	end
+
+	private
+
+	def reservation_count(reservation)
+		10 - reservation.count.to_i
+	end
+
+	helper_method :reservation_count
 end

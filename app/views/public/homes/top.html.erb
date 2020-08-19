@@ -31,7 +31,7 @@
         </div>
         <div class="seet-count">
           <% if reservations.count != 0 %>
-            残り<%= 10 - reservations.count.to_i %>
+            残り<%= reservation_count(reservations) %>
           <% end %>
         </div>
       <% end %>
