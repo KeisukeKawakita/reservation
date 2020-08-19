@@ -14,14 +14,14 @@
   </div>
 
   <div class="col-xs-9">
-    <%= month_calendar events: @reservations do |date, reservations| %>
+    <%= month_calendar events: @reservations do |date, reservation| %>
       <%= link_to day_path(date) do %>
         <div class="date-day">
           <%= date.day %>
         </div class="seet-count">
         <div>
-          <% if reservations.count != 0 %>
-            残り<%= reservation_count(reservations) %>
+          <% if reservation.count != 0 %>
+            残り<%= reservation_count(reservation) %>
           <% end %>
         </div>
       <% end %>

@@ -44,8 +44,8 @@ class Public::ReservationsController < ApplicationController
 		params.require(:reservation).permit(:time, :start_time)
 	end
 
-	def reservation_count(reservation)
-		10 - reservation.count.to_i
+	def reservation_count(reserve)
+		10 - reserve.count.to_i
 	end
 
 	helper_method :reservation_count
