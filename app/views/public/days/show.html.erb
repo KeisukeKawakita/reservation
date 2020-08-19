@@ -3,7 +3,7 @@
     <%= @time %>
   </h2>
   <h3>
-    残り<%= 10 - @reservations.count.to_i %>
+    残り<%= reservation_count(@reservations) %>
   </h3>
 
   <div class="col-xs-6">

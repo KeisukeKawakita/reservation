@@ -6,4 +6,12 @@ class Public::DaysController < ApplicationController
 		@reservation = Reservation.new
 		@schedule = Schedule.new
 	end
+
+    private
+
+    def reservation_count(reservation)
+		10 - reservation.count.to_i
+	end
+
+	helper_method :reservation_count
 end
