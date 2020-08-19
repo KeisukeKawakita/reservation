@@ -1,4 +1,10 @@
 <div class="row">
+  <h2>
+    <%= params[:id] %>
+  </h2>
+  <h3>
+    残り<%= reservation_count(@reservations) %>
+  </h3>
 
   <div class="col-xs-6">
     <table class="table table-striped", border="2">
@@ -13,7 +19,7 @@
         <% @reservations.each do |reservation| %>
           <tr>
             <td><%= reservation.end_user.name %></td>
-            <td><%= reservation.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+            <td><%= reservation.start_time.strftime("%Y-%m-%d") %></td>
           </tr>
         <% end %>
       </tbody>
@@ -45,7 +51,7 @@
      <% end %>
       <div class="time">
         <%= f.label :start_time %>
-        <%= f.datetime_select :start_time %>
+        <%= f.date_select :start_time %>
       </div>
       <%= f.submit '予約', class: "btn btn-info" %>
     <% end %>

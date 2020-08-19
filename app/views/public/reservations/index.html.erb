@@ -7,7 +7,7 @@
         自分の予約日
         <% @my_reservations.each do |reservation| %>
           <tr>
-            <td><%= reservation.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+            <td><%= reservation.start_time.strftime("%Y-%m-%d") %></td>
           </tr>
         <% end %>
     </table>

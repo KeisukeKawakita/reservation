@@ -37,7 +37,7 @@
         自分の予約日
         <% @my_reservations.each do |reservation| %>
           <tr>
-            <td><%= reservation.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+            <td><%= reservation.start_time.strftime("%Y-%m-%d") %></td>
             <td><%= link_to 'Edit', edit_reservation_path(reservation.id), class: "btn btn-info" %></td>
             <td><%= link_to 'Destroy',reservation_path(reservation.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
           </tr>
