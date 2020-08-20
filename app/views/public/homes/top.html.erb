@@ -14,7 +14,7 @@
       <tbody>
         <% @schedules.each do |schedule| %>
          <tr>
-            <td><%= schedule.schedule_day %></td>
+            <td><%= link_to schedule.schedule_day, day_path(schedule.schedule_day) %></td>
             <td><%= schedule.name %></td>
             <td><%= schedule.introduction %></td>
          </tr>
