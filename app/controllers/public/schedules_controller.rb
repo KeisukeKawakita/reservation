@@ -6,9 +6,13 @@ class Public::SchedulesController < ApplicationController
 	end
 
 	def edit
+		@schedule = Schedule.find(params[:id])
 	end
 
 	def update
+		@schedule = Schedule.find(params[:id])
+		@schedule.update(schedule_params)
+		redirect_to day_path(@schedule.schedule_day)
 	end
 
 	def destroy

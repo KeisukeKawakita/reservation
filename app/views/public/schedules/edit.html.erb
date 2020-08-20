@@ -1,1 +1,13 @@
-スケジュール編集画面
+<h1>スケジュール情報変更</h1>
+
+<h2><%= @schedule.schedule_day %></h2>
+
+<%= form_for(@schedule, url: schedule_path(@schedule)) do |f| %>
+    <h4>予定名</h4>
+    <%= f.text_field :name %>
+    <h4>内容</h4>
+    <%= f.text_area :introduction %>
+    <div class="action">
+      <%= f.submit 'Update' %>
+    </div>
+<% end %>

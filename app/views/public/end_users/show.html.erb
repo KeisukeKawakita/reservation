@@ -45,7 +45,6 @@
                 17:00~22:00
               <% end %>
             </td>
-            <td><%= link_to 'Edit', edit_reservation_path(reservation.id), class: "btn btn-info" %></td>
             <td><%= link_to 'Destroy',reservation_path(reservation.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
           </tr>
         <% end %>

@@ -1,1 +1,15 @@
-ユーザ編集
+<h1>個人情報変更</h1>
+
+<%= form_for(@end_user, url: end_users_path) do |f| %>
+    <h4>名前</h4>
+    <%= f.text_field :name %>
+    <h4>カナ</h4>
+    <%= f.text_field :name_kana %>
+    <h4>電話番号</h4>
+    <%= f.text_field :telephone_number %>
+    <h4>メール</h4>
+    <%= f.text_field :email %>
+    <div class="action">
+      <%= f.submit 'Update' %>
+    </div>
+<% end %>

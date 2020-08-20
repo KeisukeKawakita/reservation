@@ -1,4 +1,5 @@
 class Public::ReservationsController < ApplicationController
+	before_action :authenticate_end_user!
 	def index
 		@reservations = Reservation.all
 		@my_reservations = current_end_user.reservations
@@ -23,19 +24,6 @@ class Public::ReservationsController < ApplicationController
 		@reservation = Reservation.find(params[:id])
 		@reservation.destroy
 		redirect_to end_users_path, notice:"削除しました"
-	end
-
-	def edit
-		@reservation = Reservation.find(params[:id])
-	end
-
-	def update
-		@reservation = Reservation.find(params[:id])
-		if @reservation.update(reservation_params)
-			redirect_to reserrations_path, notice:"編集しました"
-		else
-			render 'edit'
-		end
 	end
 
 	private
