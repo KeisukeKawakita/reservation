@@ -34,10 +34,17 @@
 
   <div class="col-xs-5">
     <table class="table">
-        自分の予約日
+        <%= current_end_user.name %>の予約日
         <% @my_reservations.each do |reservation| %>
           <tr>
             <td><%= reservation.start_time.strftime("%Y-%m-%d") %></td>
+            <td>
+              <% if reservation.time == 0 %>
+                13:00~17:00
+              <% else %>
+                17:00~22:00
+              <% end %>
+            </td>
             <td><%= link_to 'Edit', edit_reservation_path(reservation.id), class: "btn btn-info" %></td>
             <td><%= link_to 'Destroy',reservation_path(reservation.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
           </tr>

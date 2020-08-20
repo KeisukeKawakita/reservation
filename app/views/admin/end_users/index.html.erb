@@ -1,0 +1,22 @@
+ユーザ一覧
+<table class="table table-striped", border="2">
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>カナ</th>
+      <th>電話番号</th>
+      <th>メールアドレス</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @end_users.each do |end_user| %>
+      <tr>
+        <td><%= end_user.name %></td>
+        <td><%= end_user.name_kana %></td>
+        <td><%= end_user.telephone_number %></td>
+        <td><%= end_user.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

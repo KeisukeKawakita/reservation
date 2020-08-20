@@ -22,7 +22,7 @@ class Public::ReservationsController < ApplicationController
 	def destroy
 		@reservation = Reservation.find(params[:id])
 		@reservation.destroy
-		redirect_to reservations_path, notice:"削除しました"
+		redirect_to end_users_path, notice:"削除しました"
 	end
 
 	def edit

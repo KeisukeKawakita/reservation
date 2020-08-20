@@ -10,9 +10,6 @@
     <nav>
       <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
         <% if end_user_signed_in? %>
-          <li size="50" color="ff0000">
-            <%= current_end_user.name %>
-          </li>
           <li class="icon">
             <%= link_to end_users_path do %>
             <i class="fas fa-home"></i>
@@ -27,6 +24,19 @@
           </li>
           <li class="icon">
             <%= link_to destroy_end_user_session_path, method: :delete do %>
+            <i class="fas fa-sign-out-alt"></i>
+            ログアウト
+            <% end %>
+          </li>
+        <% elsif admin_signed_in? %>
+          <li class="icon">
+            <%= link_to admin_end_users_path do %>
+            <i class="fas fa-link"></i>
+            会員一覧
+            <% end %>
+          </li>
+          <li class="icon">
+            <%= link_to destroy_admin_session_path, method: :delete do %>
             <i class="fas fa-sign-out-alt"></i>
             ログアウト
             <% end %>
