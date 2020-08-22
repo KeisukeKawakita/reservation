@@ -1,7 +1,7 @@
 class Public::HomesController < ApplicationController
 	def top
-		@reservations = Reservation.all
-		@schedules = Schedule.all
+		@reservations = Reservation.where(start_time: Date.today..Float::INFINITY)
+		@schedules = Schedule.all.order(schedule_day: "ASC")
 	end
 
 	private

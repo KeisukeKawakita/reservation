@@ -6,27 +6,40 @@
     <table class="table">
         <%= current_end_user.name %>の予約日
         <% @my_reservations.each do |reservation| %>
-          <tr>
-            <td><%= reservation.start_time.strftime("%Y-%m-%d") %></td>
-            <td>
-              <% if reservation.time == 0 %>
-                13:00~17:00
-              <% else %>
-                17:00~22:00
-              <% end %>
-            </td>
-          </tr>
+          <% if reservation.start_time >= Date.today %>
+            <tr>
+              <td><%= reservation.start_time.strftime("%Y-%m-%d") %></td>
+              <td>
+                <% if reservation.time == 0 %>
+                  13:00~17:00
+                <% else %>
+                  17:00~22:00
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
         <% end %>
     </table>
   </div>
 
   <div class="col-xs-9">
     <%= month_calendar events: @reservations do |date, reservation| %>
-      <%= link_to day_path(date) do %>
+      <% if date >= Date.today %>
+        <%= link_to day_path(date) do %>
+          <div class="date-day">
+            <%= date.day %>
+          </div class="seet-count">
+          <div>
+            <% if reservation.count != 0 %>
+              残り<%= reservation_count(reservation) %>
+            <% end %>
+          </div>
+        <% end %>
+      <% else %>
         <div class="date-day">
           <%= date.day %>
-        </div class="seet-count">
-        <div>
+        </div>
+        <div class="seet-count">
           <% if reservation.count != 0 %>
             残り<%= reservation_count(reservation) %>
           <% end %>

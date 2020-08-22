@@ -1,8 +1,8 @@
 class Public::ReservationsController < ApplicationController
 	before_action :authenticate_end_user!
 	def index
-		@reservations = Reservation.all
-		@my_reservations = current_end_user.reservations
+		@reservations = Reservation.where(start_time: Date.today..Float::INFINITY)
+		@my_reservations = current_end_user.reservations.where(start_time: Date.today..Float::INFINITY).order(start_time: "ASC")
 	end
 
 	def new
