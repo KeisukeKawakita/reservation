@@ -8,5 +8,6 @@
 
 Admin.create!(
    name: 'katolab',
+   email: 'kkk@kkk',
    password: 'katolab',
 )
