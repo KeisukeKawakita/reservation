@@ -53,11 +53,16 @@
   </div>
 
   <div class="col-xs-6">
-    <h3>研究室予約</h3>
-    <%= form_for(@reservation, url: reservations_path) do |f| %>
-      <%= f.select :time, {'10時~17時': 0, '17時~22時': 1}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
-      <%= f.hidden_field :start_time, value: params[:id] %>
-      <%= f.submit '予約', class: "btn btn-info" %>
+    <% if @reservations.find_by(end_user_id: current_end_user.id).present? %>
+      <h3>研究室予約</h3>
+      すでに予約しています
+    <% else %>
+      <h3>研究室予約</h3>
+      <%= form_for(@reservation, url: reservations_path) do |f| %>
+        <%= f.select :time, {'10時~17時': 0, '17時~22時': 1}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+        <%= f.hidden_field :start_time, value: params[:id] %>
+        <%= f.submit '予約', class: "btn btn-info" %>
+      <% end %>
     <% end %>
 
     <h3>研究室の予定</h3>
