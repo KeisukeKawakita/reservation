@@ -69,3 +69,5 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 gem 'devise'
 gem 'simple_calendar', '~> 2.0'
+
+gem 'pry-byebug'

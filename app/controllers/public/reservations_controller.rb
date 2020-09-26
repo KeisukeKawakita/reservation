@@ -17,6 +17,12 @@ class Public::ReservationsController < ApplicationController
 		reservation = Reservation.new(reservation_params)
 		reservation.end_user_id = current_end_user.id
 		reservation.save
+		@contact = Contact.new
+		@contact.email = current_end_user.email
+		@contact.message = "予約受け付けました"
+	    @contact.save
+	    ContactMailer.contact_mail(@contact).deliver
+	    flash[:success] = '予約を受け付けました'
 		redirect_to reservations_path
 	end
 

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'contacts/new'
+  get 'contacts/create'
   devise_for :admin, :controllers => {
     :registrations => 'admin/registrations',
     :sessions => 'admin/sessions'

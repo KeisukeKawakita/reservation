@@ -7,6 +7,7 @@ class Public::DaysController < ApplicationController
 		@time = @id.to_s
 		@reservation = Reservation.new
 		@schedule = Schedule.new
+		@contact = Contact.new
 	end
 
     private
