@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :end_users, only: [:index]
+    resources :end_users, only: [:index, :destroy]
   end
 
   devise_for :end_users, :controllers => {

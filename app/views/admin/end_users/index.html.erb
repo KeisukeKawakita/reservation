@@ -6,6 +6,7 @@
       <th>カナ</th>
       <th>電話番号</th>
       <th>メールアドレス</th>
+      <th>退会させる</th>
     </tr>
   </thead>
 
@@ -16,6 +17,7 @@
         <td><%= end_user.name_kana %></td>
         <td><%= end_user.telephone_number %></td>
         <td><%= end_user.email %></td>
+        <td><%= link_to "退会する",admin_end_user_path(end_user.id), class: "destroy-end-user",method: :delete %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,12 +1,10 @@
 <h2>予約内容</h2>
 
 <p>
-  <%= @contact %>, find me in app/views/contact_mailer/contact_mail.html.erb
+  <%= @contact.start_time %><%= @contact.time %>に<%= @contact.message %>が予約しました
 </p>
 
 ------------------------------------------------
 <p>email: <%= @contact.email %></p>
-
-<p>content: <%= @contact.message %></p>
 
 ------------------------------------------------

@@ -19,7 +19,9 @@ class Public::ReservationsController < ApplicationController
 		reservation.save
 		@contact = Contact.new
 		@contact.email = current_end_user.email
-		@contact.message = "予約受け付けました"
+		@contact.message = current_end_user.name
+		@contact.time = reservation.time
+		@contact.start_time = reservation.start_time
 	    @contact.save
 	    ContactMailer.contact_mail(@contact).deliver
 	    flash[:success] = '予約を受け付けました'
