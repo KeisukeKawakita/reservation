@@ -1,6 +1,17 @@
 <h2>予約内容</h2>
 
-
+<p>
+  <%= @contact.start_time %><%= @contact.time %>に<%= @contact.message %>が予約しました
+</p>
+<% if @contact.time == 0 %>
+  <p>
+    <%= @contact.start_time %> 13:00~17:00に<%= @contact.message %>が予約しました
+  </p>
+<% else %>
+  <p>
+    <%= @contact.start_time %> 17:00~22:00に<%= @contact.message %>が予約しました
+  </p>
+<% end %>
 ------------------------------------------------
 <p>email: <%= @contact.email %></p>
 
