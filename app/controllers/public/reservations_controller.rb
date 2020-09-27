@@ -23,6 +23,7 @@ class Public::ReservationsController < ApplicationController
 		@contact.time = reservation.time
 		@contact.start_time = reservation.start_time
 	    @contact.save
+	    # binding.pry
 	    ContactMailer.contact_mail(@contact).deliver
 	    flash[:success] = '予約を受け付けました'
 		redirect_to reservations_path
