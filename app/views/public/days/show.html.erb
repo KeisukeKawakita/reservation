@@ -53,32 +53,34 @@
   </div>
 
   <div class="col-xs-6">
-    <% if @reservations.find_by(end_user_id: current_end_user.id).present? %>
-      <h3>研究室予約</h3>
-      すでに予約しています
-    <% else %>
-      <h3>研究室予約</h3>
-      <%= form_for(@reservation, url: reservations_path) do |f| %>
-        <%= f.select :time, {'10時~17時': 0, '17時~22時': 1}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
-        <%= f.hidden_field :start_time, value: params[:id] %>
-        <%= f.submit '予約', class: "btn btn-info" %>
+    <% if not admin_signed_in? %>
+      <% if @reservations.find_by(end_user_id: current_end_user.id).present? %>
+        <h3>研究室予約</h3>
+        すでに予約しています
+      <% else %>
+        <h3>研究室予約</h3>
+        <%= form_for(@reservation, url: reservations_path) do |f| %>
+          <%= f.select :time, {'10時~17時': 0, '17時~22時': 1}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+          <%= f.hidden_field :start_time, value: params[:id] %>
+          <%= f.submit '予約', class: "btn btn-info" %>
+        <% end %>
       <% end %>
-    <% end %>
 
-    <h3>研究室の予定</h3>
-    <%= form_for(@schedule, url: schedules_path) do |f| %>
+      <h3>研究室の予定</h3>
+      <%= form_for(@schedule, url: schedules_path) do |f| %>
 
-     <h4>予定名</h4>
-     <%= f.text_field :name %>
+       <h4>予定名</h4>
+       <%= f.text_field :name %>
 
-     <h4>内容</h4>
-     <%= f.text_area :introduction %>
+       <h4>内容</h4>
+       <%= f.text_area :introduction %>
 
-     <%= f.hidden_field :schedule_day, value: params[:id] %>
+       <%= f.hidden_field :schedule_day, value: params[:id] %>
 
-     <div class="action">
-      <%= f.submit '予定', class: "btn btn-info" %>
-     </div>
+       <div class="action">
+        <%= f.submit '予定', class: "btn btn-info" %>
+       </div>
+      <% end %>
     <% end %>
   </div>
 </div>

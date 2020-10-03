@@ -1,5 +1,4 @@
 class Public::DaysController < ApplicationController
-	before_action :authenticate_end_user!
 	def show
 		@id = params[:id]
 		@reservations = Reservation.where(start_time: @id)
